@@ -13,6 +13,18 @@
         android:theme="@style/Theme.PizzaMaker"
         tools:targetApi="31">
         <activity
+            android:name=".StoreOrderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CurrentOrderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BuildYourOwnActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SpecialtyPizzaActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
