@@ -24,6 +24,16 @@ public class PizzaMaker
                 return new Pepperoni();
             case "Seafood":
                 return new Seafood();
+            case "Mediterranean":
+                return new Mediterranean();
+            case "MightyHarvest":
+                return new MightyHarvest();
+            case "SavoryFusion":
+                return new SavoryFusion();
+            case "SizzlingDelight":
+                return new SizzlingDelight();
+            case "VeggieFiesta":
+                return new VeggieFiesta();
             case "BuildYourOwn":
                 return new BuildYourOwn();
             default:
