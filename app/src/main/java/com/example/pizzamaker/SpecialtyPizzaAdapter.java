@@ -59,7 +59,7 @@ class SpecialtyPizzaAdapter extends RecyclerView.Adapter<SpecialtyPizzaAdapter.S
         //assign values for each row
         holder.txt_pizzaName.setText(pizzas.get(position).getClass().getSimpleName());
         holder.txt_price.setText(String.format("%.2f", pizzas.get(position).price()));
-        //holder.im_pizzaImage.setImageResource(pizzas.get(position).getImage());
+        holder.im_pizzaImage.setImageResource(pizzas.get(position).image);
     }
 
     /**

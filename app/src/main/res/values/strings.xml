@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Pizza Maker</string>
     <string name="specialty_pizzas">Specialty Pizzas</string>
+    <string name="build_your_own">Build Your Own</string>
+    <string name="current_order">Current Order</string>
+    <string name="store_orders">Store Orders</string>
     <string name="sm">Small</string>
     <string name="md">Medium</string>
     <string name="lg">Large</string>

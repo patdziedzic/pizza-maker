@@ -7,43 +7,63 @@
     tools:context=".MainActivity">
 
     <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="293dp"
-        android:layout_height="247dp"
-        android:layout_marginTop="16dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/specialtypizzas" />
-
-    <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/imbtn_buildyourown"
         android:layout_width="272dp"
         android:layout_height="218dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="16dp"
         android:scaleType="fitStart"
+        android:text="@string/build_your_own"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.578"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton2"
+        app:layout_constraintTop_toBottomOf="@+id/im_specialtypizzas"
         app:srcCompat="@drawable/buildyourown" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
+        android:id="@+id/imbtn_currentorder"
         android:layout_width="270dp"
         android:layout_height="207dp"
+        android:layout_marginTop="20dp"
         android:scaleType="fitStart"
-        app:srcCompat="@drawable/currentorder"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="469dp" />
+        android:text="@string/current_order"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imbtn_buildyourown"
+        app:srcCompat="@drawable/currentorder" />
 
     <ImageButton
-        android:id="@+id/imageButton5"
+        android:id="@+id/imbtn_storeorder"
         android:layout_width="253dp"
         android:layout_height="167dp"
         android:scaleType="fitStart"
-        app:srcCompat="@drawable/storeorders"
-        tools:layout_editor_absoluteX="90dp"
-        tools:layout_editor_absoluteY="653dp" />
+        android:text="@string/store_orders"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imbtn_currentorder"
+        app:srcCompat="@drawable/storeorders" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="104dp"
+        android:text="@string/specialty_pizzas"
+        app:layout_constraintEnd_toStartOf="@+id/im_specialtypizzas"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/im_specialtypizzas"
+        android:layout_width="177dp"
+        android:layout_height="170dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="44dp"
+        android:onClick="openSpecialtyPizza"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/specialtypizzas" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

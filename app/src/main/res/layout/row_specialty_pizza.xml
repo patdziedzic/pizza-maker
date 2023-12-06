@@ -19,8 +19,8 @@
 
             <ImageView
                 android:id="@+id/im_pizzaImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -81,6 +81,7 @@
                     android:id="@+id/chip_sm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:checked="true"
                     android:text="@string/sm" />
 
                 <com.google.android.material.chip.Chip

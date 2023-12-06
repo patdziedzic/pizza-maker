@@ -13,7 +13,9 @@ public class SpecialtyPizzaActivity extends AppCompatActivity {
     //Declare an instance of ArrayList to hold the pizzas to be display with the RecyclerView
     private ArrayList<Pizza> pizzas = new ArrayList<>();
     private int [] pizzaImages = {R.drawable.deluxe, R.drawable.meatzza, R.drawable.pepperoni,
-        R.drawable.seafood, R.drawable.supreme};
+        R.drawable.seafood, R.drawable.supreme,
+            R.drawable.deluxe, R.drawable.meatzza, R.drawable.pepperoni,
+            R.drawable.seafood, R.drawable.supreme};
     //^ include the 5 new pizza images as well
 
     @Override
@@ -44,8 +46,10 @@ public class SpecialtyPizzaActivity extends AppCompatActivity {
          */
         for (int i = 0; i < pizzaNames.length; i++) {
             Pizza pizza = PizzaMaker.createPizza(pizzaNames[i]);
+            pizza.size = Size.SMALL;
             //add corresponding images as well
-            //pizza.image = pizzaImages[i];
+            pizza.image = pizzaImages[i];
+            pizzas.add(pizza);
         }
     }
 }
