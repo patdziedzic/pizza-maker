@@ -13,6 +13,7 @@ public abstract class Pizza
     protected Sauce sauce; //Sauce is an enum class
     protected boolean extraSauce;
     protected boolean extraCheese;
+    protected int image;
 
     /**
      * Abstract method that is required to be overridden by Pizza subclasses

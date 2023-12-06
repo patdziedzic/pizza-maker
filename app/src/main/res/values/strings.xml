@@ -1,4 +1,22 @@
 <resources>
     <string name="app_name">Pizza Maker</string>
     <string name="specialty_pizzas">Specialty Pizzas</string>
+    <string name="sm">Small</string>
+    <string name="md">Medium</string>
+    <string name="lg">Large</string>
+    <string name="add">Add to Order</string>
+    <string name="extra_sauce">Extra Sauce</string>
+    <string name="extra_cheese">Extra Cheese</string>
+    <string-array name="pizzaNames">
+        <item>Deluxe</item>
+        <item>Meatzza</item>
+        <item>Mediterranean</item>
+        <item>MightyHarvest</item>
+        <item>Pepperoni</item>
+        <item>SavoryFusion</item>
+        <item>Seafood</item>
+        <item>SizzlingDelight</item>
+        <item>Supreme</item>
+        <item>VeggieFiesta</item>
+    </string-array>
 </resources>

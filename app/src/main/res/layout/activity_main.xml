@@ -27,7 +27,7 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton2"
-        app:srcCompat="@drawable/buildyourownpizza" />
+        app:srcCompat="@drawable/buildyourown" />
 
     <ImageButton
         android:id="@+id/imageButton4"
