@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Pizza Maker</string>
+    <string name="specialty_pizzas">Specialty Pizzas</string>
 </resources>
