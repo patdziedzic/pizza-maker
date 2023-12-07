@@ -3,10 +3,10 @@ package com.example.pizzamaker;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -26,6 +26,7 @@ class SpecialtyPizzaAdapter extends RecyclerView.Adapter<SpecialtyPizzaAdapter.S
 
     private Context context; //need the context to inflate the layout
     private ArrayList<Pizza> pizzas; //need the data binding to each row of RecyclerView
+    private ArrayAdapter<Topping> toppingsArrayAdapter;
 
     public SpecialtyPizzaAdapter(Context context, ArrayList<Pizza> pizzas) {
         this.context = context;
@@ -56,10 +57,16 @@ class SpecialtyPizzaAdapter extends RecyclerView.Adapter<SpecialtyPizzaAdapter.S
      */
     @Override
     public void onBindViewHolder(@NonNull SpecialtyPizzaHolder holder, int position) {
+        Pizza pizza = pizzas.get(position);
+
         //assign values for each row
-        holder.txt_pizzaName.setText(pizzas.get(position).getClass().getSimpleName());
-        holder.txt_price.setText(String.format("%.2f", pizzas.get(position).price()));
-        holder.im_pizzaImage.setImageResource(pizzas.get(position).image);
+        holder.txt_pizzaName.setText(pizza.getClass().getSimpleName());
+        holder.txt_price.setText(String.format("$%.2f", pizza.price()));
+        holder.im_pizzaImage.setImageResource(pizza.image);
+        //toppingsArrayAdapter = new ArrayAdapter<Topping>(this, android.R.layout.simple_list_item_1, pizza.toppings);
+        //holder.list_toppings.setAdapter(toppingsArrayAdapter);
+
+        //^stopped coding here, still need to populate toppings using observable array list
     }
 
     /**

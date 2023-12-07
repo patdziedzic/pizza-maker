@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rowLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="391dp"
-        android:layout_height="400dp"
+        android:layout_width="396dp"
+        android:layout_height="428dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -50,8 +50,8 @@
 
             <ListView
                 android:id="@+id/list_toppings"
-                android:layout_width="207dp"
-                android:layout_height="237dp"
+                android:layout_width="211dp"
+                android:layout_height="287dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginBottom="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -81,6 +81,7 @@
                     android:id="@+id/chip_sm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:checkable="true"
                     android:checked="true"
                     android:text="@string/sm" />
 
@@ -88,12 +89,14 @@
                     android:id="@+id/chip_md"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:checkable="true"
                     android:text="@string/md" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_lg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:checkable="true"
                     android:text="@string/lg" />
             </com.google.android.material.chip.ChipGroup>
 
@@ -111,10 +114,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="36dp"
-                android:layout_marginBottom="40dp"
+                android:layout_marginBottom="104dp"
                 android:text="@string/extra_cheese"
                 app:layout_constraintBottom_toTopOf="@+id/txt_price"
                 app:layout_constraintEnd_toEndOf="parent" />
+
+            <EditText
+                android:id="@+id/input_Amount"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="36dp"
+                android:layout_marginBottom="52dp"
+                android:ems="10"
+                android:hint="0"
+                android:inputType="number"
+                app:layout_constraintBottom_toTopOf="@+id/txt_price"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_Amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="60dp"
+                android:text="@string/amount"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/txt_price"
+                app:layout_constraintEnd_toStartOf="@+id/input_Amount" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

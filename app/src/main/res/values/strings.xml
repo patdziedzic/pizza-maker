@@ -7,6 +7,7 @@
     <string name="sm">Small</string>
     <string name="md">Medium</string>
     <string name="lg">Large</string>
+    <string name="amount">Amount:</string>
     <string name="add">Add to Order</string>
     <string name="extra_sauce">Extra Sauce</string>
     <string name="extra_cheese">Extra Cheese</string>
