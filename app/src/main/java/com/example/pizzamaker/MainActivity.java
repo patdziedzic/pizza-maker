@@ -25,4 +25,10 @@ public class MainActivity extends AppCompatActivity {
         //intent.putExtra("INTKEY", NUMBER); //the extra data is an integer
         startActivity(intent);
     }
+
+    public void openBuildYourOwnPizza(View view)
+    {
+        Intent intent = new Intent(this, BuildYourOwnActivity.class);
+        startActivity(intent);
+    }
 }

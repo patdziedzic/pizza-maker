@@ -8,13 +8,13 @@
 
     <ImageButton
         android:id="@+id/imbtn_buildyourown"
-        android:layout_width="272dp"
-        android:layout_height="218dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="179dp"
+        android:layout_height="161dp"
+        android:layout_marginTop="20dp"
         android:scaleType="fitStart"
         android:text="@string/build_your_own"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.578"
+        app:layout_constraintHorizontal_bias="0.818"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/im_specialtypizzas"
         app:srcCompat="@drawable/buildyourown" />
@@ -66,4 +66,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/specialtypizzas" />
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="98dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="280dp"
+        android:text="@string/build_your_own"
+        app:layout_constraintEnd_toStartOf="@+id/im_specialtypizzas"
+        app:layout_constraintHorizontal_bias="0.532"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,117 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CurrentOrderActivity">
+    tools:context=".CurrentOrderActivity"
+    tools:layout_editor_absoluteX="37dp"
+    tools:layout_editor_absoluteY="-36dp">
+
+    <TextView
+        android:id="@+id/orderNum"
+        android:layout_width="37dp"
+        android:layout_height="36dp"
+        android:text=""
+        android:textSize="24sp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="261dp"
+        tools:layout_editor_absoluteY="32dp" />
+
+    <TextView
+        android:id="@+id/orderNoText"
+        android:layout_width="166dp"
+        android:layout_height="36dp"
+        android:text="@string/order_number"
+        android:textSize="24sp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="95dp"
+        tools:layout_editor_absoluteY="32dp" />
+
+    <TextView
+        android:id="@+id/pizzaListText"
+        android:layout_width="361dp"
+        android:layout_height="408dp"
+        android:text=""
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="82dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/subtotalText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/subtotal"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="515dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/subtotalValue"
+        android:layout_width="56dp"
+        android:layout_height="24dp"
+        android:text=""
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="123dp"
+        tools:layout_editor_absoluteY="515dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/salesTaxText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sales_tax"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="553dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/salesTaxValue"
+        android:layout_width="60dp"
+        android:layout_height="24dp"
+        android:text=""
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="135dp"
+        tools:layout_editor_absoluteY="553dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/orderTotalText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/order_total"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="591dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/orderTotalValue"
+        android:layout_width="56dp"
+        android:layout_height="24dp"
+        android:text=""
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="144dp"
+        tools:layout_editor_absoluteY="591dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/removePizzaButton"
+        android:layout_width="154dp"
+        android:layout_height="48dp"
+        android:text="@string/remove_pizza"
+        tools:layout_editor_absoluteX="232dp"
+        tools:layout_editor_absoluteY="515dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/addOrderButton"
+        android:layout_width="153dp"
+        android:layout_height="46dp"
+        android:text="@string/add_to_order"
+        tools:layout_editor_absoluteX="232dp"
+        tools:layout_editor_absoluteY="572dp"
+        tools:ignore="MissingConstraints" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

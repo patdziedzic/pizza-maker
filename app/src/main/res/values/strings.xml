@@ -11,6 +11,17 @@
     <string name="add">Add to Order</string>
     <string name="extra_sauce">Extra Sauce</string>
     <string name="extra_cheese">Extra Cheese</string>
+    <string name="order_total">Order Total: $</string>
+    <string name="sales_tax">Sales Tax: $</string>
+    <string name="subtotal">Subtotal: $</string>
+    <string name="order_number">Order Number:</string>
+    <string name="remove_pizza">Remove Pizza</string>
+    <string name="add_to_order">Add to Order</string>
+    <string name="build_your_own_pizza">Build Your Own Pizza</string>
+    <string name="tomato_sauce">Tomato Sauce</string>
+    <string name="alfredo_sauce">Alfredo Sauce</string>
+    <string name="size">Size:</string>
+    <string name="price">Price: $</string>
     <string-array name="pizzaNames">
         <item>Deluxe</item>
         <item>Meatzza</item>
