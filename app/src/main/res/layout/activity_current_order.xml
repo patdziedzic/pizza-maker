@@ -12,109 +12,129 @@
         android:id="@+id/orderNum"
         android:layout_width="37dp"
         android:layout_height="36dp"
+        android:layout_marginTop="32dp"
         android:text=""
         android:textSize="24sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="261dp"
-        tools:layout_editor_absoluteY="32dp" />
+        app:layout_constraintStart_toEndOf="@+id/orderNoText"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/orderNoText"
         android:layout_width="166dp"
         android:layout_height="36dp"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="32dp"
         android:text="@string/order_number"
         android:textSize="24sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="95dp"
-        tools:layout_editor_absoluteY="32dp" />
-
-    <TextView
-        android:id="@+id/pizzaListText"
-        android:layout_width="361dp"
-        android:layout_height="408dp"
-        android:text=""
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="82dp"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/subtotalText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/subtotal"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="515dp"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/subtotalValue"
-        android:layout_width="56dp"
-        android:layout_height="24dp"
-        android:text=""
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="123dp"
-        tools:layout_editor_absoluteY="515dp"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/salesTaxText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sales_tax"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="553dp"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/salesTaxValue"
-        android:layout_width="60dp"
-        android:layout_height="24dp"
-        android:text=""
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="135dp"
-        tools:layout_editor_absoluteY="553dp"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/orderTotalText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/order_total"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="591dp"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/orderTotalValue"
-        android:layout_width="56dp"
-        android:layout_height="24dp"
-        android:text=""
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="144dp"
-        tools:layout_editor_absoluteY="591dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/removePizzaButton"
         android:layout_width="154dp"
         android:layout_height="48dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="9dp"
         android:text="@string/remove_pizza"
-        tools:layout_editor_absoluteX="232dp"
-        tools:layout_editor_absoluteY="515dp"
+        app:layout_constraintBottom_toTopOf="@+id/addOrderButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/subtotalText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginBottom="13dp"
+        android:text="@string/subtotal"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/salesTaxText"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/salesTaxText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginBottom="14dp"
+        android:text="@string/sales_tax"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/orderTotalText"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/subtotalValue"
+        android:layout_width="56dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="13dp"
+        android:text=""
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/salesTaxText"
+        app:layout_constraintStart_toEndOf="@+id/subtotalText"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/salesTaxValue"
+        android:layout_width="60dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="14dp"
+        android:text=""
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/orderTotalValue"
+        app:layout_constraintStart_toEndOf="@+id/salesTaxText"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/orderTotalValue"
+        android:layout_width="56dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginBottom="52dp"
+        android:text=""
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/orderTotalText"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/addOrderButton"
         android:layout_width="153dp"
         android:layout_height="46dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="49dp"
         android:text="@string/add_to_order"
-        tools:layout_editor_absoluteX="232dp"
-        tools:layout_editor_absoluteY="572dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/orderTotalText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginBottom="52dp"
+        android:text="@string/order_total"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <ListView
+        android:id="@+id/listPizzas"
+        android:layout_width="391dp"
+        android:layout_height="445dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/orderNum" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

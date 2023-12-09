@@ -60,20 +60,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
-        android:layout_width="358dp"
-        android:layout_height="369dp"
-        android:layout_marginStart="24dp"
+        android:id="@+id/listOrderPizzas"
+        android:layout_width="match_parent"
+        android:layout_height="399dp"
         android:layout_marginTop="180dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/cancel_Order_Button"
-        android:layout_width="146dp"
-        android:layout_height="84dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="592dp"
-        android:text="@string/cancel_order"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -82,8 +72,18 @@
         android:layout_width="164dp"
         android:layout_height="84dp"
         android:layout_marginStart="212dp"
-        android:layout_marginTop="592dp"
+        android:layout_marginTop="640dp"
         android:text="@string/export_store_orders"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/cancel_Order_Button"
+        android:layout_width="146dp"
+        android:layout_height="84dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="640dp"
+        android:text="@string/cancel_order"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
