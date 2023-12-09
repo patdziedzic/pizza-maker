@@ -9,13 +9,13 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.chip.Chip;
@@ -25,6 +25,7 @@ import java.util.ArrayList;
 class SpecialtyPizzaAdapter extends RecyclerView.Adapter<SpecialtyPizzaAdapter.SpecialtyPizzaHolder>{
 
     private Context context; //need the context to inflate the layout
+    private static GlobalData globalData = GlobalData.getInstance();
     private ArrayList<Pizza> pizzas; //need the data binding to each row of RecyclerView
     private ArrayAdapter<String> toppingsArrayAdapter;
 
@@ -84,7 +85,6 @@ class SpecialtyPizzaAdapter extends RecyclerView.Adapter<SpecialtyPizzaAdapter.S
 
 
 
-
     /**
      * Get the views from the row layout file, similar to the onCreate() method.
      */
@@ -94,8 +94,8 @@ class SpecialtyPizzaAdapter extends RecyclerView.Adapter<SpecialtyPizzaAdapter.S
         private Chip chip_sm, chip_md, chip_lg;
         private CheckBox check_sauce, check_cheese;
         private ListView list_toppings;
+        private EditText input_Amount;
         private Button btn_add;
-        private ConstraintLayout parentLayout; //this is the row layout
 
         public SpecialtyPizzaHolder(@NonNull View itemView) {
             super(itemView);
@@ -108,9 +108,43 @@ class SpecialtyPizzaAdapter extends RecyclerView.Adapter<SpecialtyPizzaAdapter.S
             check_sauce = itemView.findViewById(R.id.check_sauce);
             check_cheese = itemView.findViewById(R.id.check_cheese);
             list_toppings = itemView.findViewById(R.id.list_toppings);
+            input_Amount = itemView.findViewById(R.id.input_Amount);
             btn_add = itemView.findViewById(R.id.btn_add);
-            parentLayout = itemView.findViewById(R.id.rowLayout);
-            setAddButtonOnClick(itemView); //register the onClicklistener for the button on each row.
+            setOnPizzaChange(itemView);
+            setAddButtonOnClick(itemView);
+        }
+
+        private void setOnPizzaChange(@NonNull View itemView) {
+            chip_sm.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    createPizza();
+                }
+            });
+            chip_md.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    createPizza();
+                }
+            });
+            chip_lg.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    createPizza();
+                }
+            });
+            check_sauce.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    createPizza();
+                }
+            });
+            check_cheese.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    createPizza();
+                }
+            });
         }
 
         /**
@@ -122,26 +156,70 @@ class SpecialtyPizzaAdapter extends RecyclerView.Adapter<SpecialtyPizzaAdapter.S
             btn_add.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    AlertDialog.Builder alert = new AlertDialog.Builder(itemView.getContext());
-                    alert.setTitle("Add to Order");
-                    alert.setMessage(txt_pizzaName.getText().toString());
-                    //handle the "YES" click
-                    alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            Toast.makeText(itemView.getContext(),
-                                    txt_pizzaName.getText().toString() + " added.", Toast.LENGTH_LONG).show();
-                        }
-                        //handle the "NO" click
-                    }).setNegativeButton("no", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            Toast.makeText(itemView.getContext(),
-                                    txt_pizzaName.getText().toString() + " not added.", Toast.LENGTH_LONG).show();
-                        }
-                    });
-                    AlertDialog dialog = alert.create();
-                    dialog.show();
+                    if (isValidAmount()) {
+                        AlertDialog.Builder alert = new AlertDialog.Builder(itemView.getContext());
+                        alert.setTitle("Add to Order");
+                        alert.setMessage(txt_pizzaName.getText().toString());
+                        //handle the "YES" click
+                        alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                createPizza();
+                                Pizza currPizza = globalData.getCurrPizza();
+                                Order currOrder = globalData.getCurrOrder();
+                                currOrder.addPizza(currPizza);
+                                globalData.setCurrOrder(currOrder);
+                                //^ still must update pizzas on GUI and the prices on GUI for currentorderactivity
+                                Toast.makeText(itemView.getContext(),
+                                        txt_pizzaName.getText().toString() + " added.", Toast.LENGTH_LONG).show();
+                            }
+                            //handle the "NO" click
+                        }).setNegativeButton("no", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(itemView.getContext(),
+                                        txt_pizzaName.getText().toString() + " not added.", Toast.LENGTH_LONG).show();
+                            }
+                        });
+                        AlertDialog dialog = alert.create();
+                        dialog.show();
+                    }
                 }
             });
+        }
+
+        /**
+         * Creates a Pizza object, stores it in GlobalData currPizza, and updates the price
+         */
+        private void createPizza() {
+            Pizza currPizza = PizzaMaker.createPizza(txt_pizzaName.getText().toString());
+            if (currPizza == null) return;
+
+            if (chip_sm.isChecked()) currPizza.size = Size.SMALL;
+            else if (chip_md.isChecked()) currPizza.size = Size.MEDIUM;
+            else if (chip_lg.isChecked()) currPizza.size = Size.LARGE;
+            if (check_sauce.isChecked()) currPizza.extraSauce = true;
+            if (check_cheese.isChecked()) currPizza.extraCheese = true;
+
+            double price = currPizza.price();
+            String strInput = input_Amount.getText().toString();
+            if (!strInput.isEmpty()) {
+                int numInput = Integer.parseInt(strInput);
+                if (numInput > 0)
+                    price = price * numInput;
+            }
+            txt_price.setText(String.format("$%.2f", price));
+
+            globalData.setCurrPizza(currPizza);
+        }
+
+        private boolean isValidAmount() {
+            String strInput = input_Amount.getText().toString();
+            if (!strInput.isEmpty()) {
+                int numInput = Integer.parseInt(strInput);
+                if (numInput > 0) return true;
+            }
+            Toast.makeText(itemView.getContext(),
+                    "Not enough pizzas selected.", Toast.LENGTH_LONG).show();
+            return false;
         }
     }
 }
