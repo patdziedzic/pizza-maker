@@ -22,13 +22,22 @@ public class MainActivity extends AppCompatActivity {
      */
     public void openSpecialtyPizza(View view) {
         Intent intent = new Intent(this, SpecialtyPizzaActivity.class);
-        //intent.putExtra("INTKEY", NUMBER); //the extra data is an integer
         startActivity(intent);
     }
 
     public void openBuildYourOwnPizza(View view)
     {
         Intent intent = new Intent(this, BuildYourOwnActivity.class);
+        startActivity(intent);
+    }
+
+    public void openCurrentOrder(View view) {
+        Intent intent = new Intent(this, CurrentOrderActivity.class);
+        startActivity(intent);
+    }
+
+    public void openStoreOrders(View view) {
+        Intent intent = new Intent(this, StoreOrderActivity.class);
         startActivity(intent);
     }
 }

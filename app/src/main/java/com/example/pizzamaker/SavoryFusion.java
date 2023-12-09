@@ -13,7 +13,7 @@ public class SavoryFusion extends Pizza
     {
         sauce = Sauce.TOMATO;
         toppings = new ArrayList<>(Arrays.asList(Topping.SAUSAGE, Topping.BEEF,
-                Topping.MUSHROOM, Topping.MUSHROOM));
+                Topping.MUSHROOM, Topping.ONION));
     }
 
     /**

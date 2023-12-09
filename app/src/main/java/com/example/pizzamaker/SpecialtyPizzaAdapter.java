@@ -26,7 +26,7 @@ class SpecialtyPizzaAdapter extends RecyclerView.Adapter<SpecialtyPizzaAdapter.S
 
     private Context context; //need the context to inflate the layout
     private ArrayList<Pizza> pizzas; //need the data binding to each row of RecyclerView
-    private ArrayAdapter<Topping> toppingsArrayAdapter;
+    private ArrayAdapter<String> toppingsArrayAdapter;
 
     public SpecialtyPizzaAdapter(Context context, ArrayList<Pizza> pizzas) {
         this.context = context;
@@ -63,10 +63,13 @@ class SpecialtyPizzaAdapter extends RecyclerView.Adapter<SpecialtyPizzaAdapter.S
         holder.txt_pizzaName.setText(pizza.getClass().getSimpleName());
         holder.txt_price.setText(String.format("$%.2f", pizza.price()));
         holder.im_pizzaImage.setImageResource(pizza.image);
-        //toppingsArrayAdapter = new ArrayAdapter<Topping>(this, android.R.layout.simple_list_item_1, pizza.toppings);
-        //holder.list_toppings.setAdapter(toppingsArrayAdapter);
 
-        //^stopped coding here, still need to populate toppings using observable array list
+        String[] toppings = new String[pizza.toppings.size()];
+        for (int i = 0; i < pizza.toppings.size(); i++) {
+            toppings[i] = pizza.toppings.get(i).getName();
+        }
+        toppingsArrayAdapter = new ArrayAdapter<>(this.context, android.R.layout.simple_list_item_1, toppings);
+        holder.list_toppings.setAdapter(toppingsArrayAdapter);
     }
 
     /**

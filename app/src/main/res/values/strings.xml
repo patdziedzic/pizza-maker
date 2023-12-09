@@ -22,8 +22,15 @@
     <string name="alfredo_sauce">Alfredo Sauce</string>
     <string name="size">Size:</string>
     <string name="price">Price: $</string>
+    <string name="add_toppings">Additional Toppings:</string>
+    <string name="sel_toppings">Selected Toppings:</string>
     <string name="cancel_order">Cancel Order</string>
     <string name="export_store_orders">Export Store Orders</string>
+    <string-array name="sizes">
+        <item>Small</item>
+        <item>Medium</item>
+        <item>Large</item>
+    </string-array>
     <string-array name="pizzaNames">
         <item>Deluxe</item>
         <item>Meatzza</item>
