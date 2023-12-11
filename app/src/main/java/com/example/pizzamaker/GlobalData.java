@@ -73,12 +73,4 @@ public final class GlobalData {
     public void setStoreOrders(StoreOrders storeOrders) {
         this.storeOrders = storeOrders;
     }
-
-    /*
-        Code to access data:
-
-        GlobalData globalData = GlobalData.getInstance();
-        globalData.setCurrPizza("..."); //update currPizza with the setter
-        Pizza currPizza = globalData.getCurrPizza(): //get currPizza with the getter
-     */
 }

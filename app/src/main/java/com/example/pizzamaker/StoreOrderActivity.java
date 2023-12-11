@@ -18,6 +18,10 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+/**
+ * This class defines an Android Activity for viewing all orders in the store.
+ * @author Patryk Dziedzic, Aveesh Patel
+ */
 public class StoreOrderActivity extends AppCompatActivity
 {
     private static GlobalData globalData = GlobalData.getInstance();
@@ -38,7 +42,6 @@ public class StoreOrderActivity extends AppCompatActivity
      * @param savedInstanceState If the activity is being re-initialized after
      *     previously being shut down then this Bundle contains the data it most
      *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
-     *
      */
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -115,7 +118,7 @@ public class StoreOrderActivity extends AppCompatActivity
      * @return the specified Order
      */
     private Order getSelectedOrder() {
-        orderNum = Integer.parseInt(orderNoSpinner.getSelectedItem().toString()); //getselecteditem to string on a null
+        orderNum = Integer.parseInt(orderNoSpinner.getSelectedItem().toString());
         StoreOrders storeOrders = globalData.getStoreOrders();
         ArrayList<Order> ordersList = storeOrders.getOrdersList();
         Order selectedOrder = null;
@@ -136,7 +139,7 @@ public class StoreOrderActivity extends AppCompatActivity
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 selPizzas.clear();
-                updateTotalAndPizzas(getSelectedOrder()); //getselecteditem to string on a null
+                updateTotalAndPizzas(getSelectedOrder());
             }
 
             @Override
@@ -152,36 +155,41 @@ public class StoreOrderActivity extends AppCompatActivity
         cancelOrderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder alert = new AlertDialog.Builder(cancelOrderButton.getContext());
-                alert.setTitle("Cancel Order?");
-                alert.setMessage("Order #" + orderNoSpinner.getSelectedItem().toString()); //getselecteditem to string on a null
-                alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        //remove selected order from orders list
-                        orderNum = Integer.parseInt(orderNoSpinner.getSelectedItem().toString()); //getselecteditem to string on a null
-                        StoreOrders storeOrders = globalData.getStoreOrders();
-                        ArrayList<Order> ordersList = storeOrders.getOrdersList();
-                        for (Order order : ordersList) {
-                            if (order.getOrderNumber() == orderNum) {
-                                storeOrders.removeOrder(order);
-                                break;
+                if (orderNoSpinner.getSelectedItem() == null || orderNumbers.size() == 0) {
+                    Toast.makeText(getApplicationContext(),
+                            "No order selected.", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    AlertDialog.Builder alert = new AlertDialog.Builder(cancelOrderButton.getContext());
+                    alert.setTitle("Cancel Order?");
+                    alert.setMessage("Order #" + orderNoSpinner.getSelectedItem().toString());
+                    alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            //remove selected order from orders list
+                            orderNum = Integer.parseInt(orderNoSpinner.getSelectedItem().toString());
+                            StoreOrders storeOrders = globalData.getStoreOrders();
+                            ArrayList<Order> ordersList = storeOrders.getOrdersList();
+                            for (Order order : ordersList) {
+                                if (order.getOrderNumber() == orderNum) {
+                                    storeOrders.removeOrder(order);
+                                    break;
+                                }
                             }
+                            globalData.setStoreOrders(storeOrders);
+                            updateGUI();
+                            Toast.makeText(getApplicationContext(),
+                                    "Order #" + orderNum + " canceled.", Toast.LENGTH_LONG).show();
                         }
-                        globalData.setStoreOrders(storeOrders);
-                        updateGUI();
-                        Toast.makeText(getApplicationContext(),
-                                "Order #" + orderNoSpinner.getSelectedItem().toString()
-                                        +" canceled.", Toast.LENGTH_LONG).show();
-                    }
-                    //handle the "NO" click
-                }).setNegativeButton("no", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getApplicationContext(),
-                                "Order not canceled.", Toast.LENGTH_LONG).show();
-                    }
-                });
-                AlertDialog dialog = alert.create();
-                dialog.show();
+                        //handle the "NO" click
+                    }).setNegativeButton("no", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(getApplicationContext(),
+                                    "Order not canceled.", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                    AlertDialog dialog = alert.create();
+                    dialog.show();
+                }
             }
         });
     }

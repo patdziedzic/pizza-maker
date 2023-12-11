@@ -1,6 +1,5 @@
 package com.example.pizzamaker;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.ObservableArrayList;
 
@@ -22,6 +21,10 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * This class defines an Android Activity for building a BuildYourOwn Pizza.
+ * @author Patryk Dziedzic, Aveesh Patel
+ */
 public class BuildYourOwnActivity extends AppCompatActivity {
 
     private final int MIN_TOPPINGS = 3;

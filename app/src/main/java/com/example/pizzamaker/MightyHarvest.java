@@ -3,6 +3,10 @@ package com.example.pizzamaker;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * This class defines a Mighty Harvest Pizza.
+ * @author Patryk Dziedzic, Aveesh Patel
+ */
 public class MightyHarvest extends Pizza
 {
     /**

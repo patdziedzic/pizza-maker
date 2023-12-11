@@ -8,6 +8,10 @@ import android.view.View;
 
 import java.util.ArrayList;
 
+/**
+ * This class defines the main Android Activity for navigating between other Activities.
+ * @author Patryk Dziedzic, Aveesh Patel
+ */
 public class MainActivity extends AppCompatActivity {
 
     /**
@@ -16,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
      * @param savedInstanceState If the activity is being re-initialized after
      *     previously being shut down then this Bundle contains the data it most
      *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
-     *
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +39,6 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * The event handler for the SpecialtyPizza ImageView click.
-     * Add extra data to an Intent object and pass the extra data to the Activity being started.
-     * INTKEY is the name to be used to retrieve the extra data NUMBER.
      * @param view the Android View which fired the event.
      */
     public void openSpecialtyPizza(View view) {
@@ -47,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * The event handler for the BuildYourOwnPizza ImageView click
-     * Adds necessary extra data to the Intent object and passes the extra data to the Activity being started
      * @param view the Android View which fired and began the event
      */
     public void openBuildYourOwnPizza(View view)
@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * The event handler for the CurrentOrder ImageView click
-     * Adds necessary extra data to the Intent object and passes the extra data to the Activity being started
      * @param view the Android View which fired and began the event
      */
     public void openCurrentOrder(View view) {
@@ -68,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * The event handler for the BuildYourOwnPizza ImageView click
-     * Adds necessary extra data to the Intent object and passes the extra data to the Activity being started
      * @param view the Android View which fired and began the event
      */
     public void openStoreOrders(View view) {

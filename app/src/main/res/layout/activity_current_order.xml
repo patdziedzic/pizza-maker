@@ -93,11 +93,11 @@
 
     <Button
         android:id="@+id/addOrderButton"
-        android:layout_width="157dp"
-        android:layout_height="81dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="176dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="60dp"
-        android:text="@string/add_to_order"
+        android:text="@string/add_to_store_orders"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingConstraints" />

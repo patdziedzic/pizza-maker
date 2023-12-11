@@ -8,9 +8,15 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 
+/**
+ * This class defines an Android Activity for setting up the Recycler View for Specialty Pizza.
+ * @author Patryk Dziedzic, Aveesh Patel
+ */
 public class SpecialtyPizzaActivity extends AppCompatActivity {
 
-    //Declare an instance of ArrayList to hold the pizzas to be display with the RecyclerView
+    /**
+     * Declare an instance of ArrayList to hold the pizzas to be displayed with the RecyclerView
+     */
     private ArrayList<Pizza> pizzas = new ArrayList<>();
     private int [] pizzaImages = {R.drawable.deluxe, R.drawable.meatzza, R.drawable.mediterranean,
             R.drawable.mightyharvest, R.drawable.pepperoni, R.drawable.savoryfusion, R.drawable.seafood,
@@ -22,7 +28,6 @@ public class SpecialtyPizzaActivity extends AppCompatActivity {
      * @param savedInstanceState If the activity is being re-initialized after
      *     previously being shut down then this Bundle contains the data it most
      *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
-     *
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +42,7 @@ public class SpecialtyPizzaActivity extends AppCompatActivity {
     }
 
     /**
-     * Helper method to set up the data (the Model of the MVC).
+     * Helper method to set up the data that will populate the RecyclerView.
      */
     private void setupPizzas() {
         String [] pizzaNames = getResources().getStringArray(R.array.pizzaNames);

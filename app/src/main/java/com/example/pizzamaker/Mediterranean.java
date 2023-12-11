@@ -3,6 +3,10 @@ package com.example.pizzamaker;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * This class defines a Mediterranean Pizza.
+ * @author Patryk Dziedzic, Aveesh Patel
+ */
 public class Mediterranean extends Pizza
 {
     /**

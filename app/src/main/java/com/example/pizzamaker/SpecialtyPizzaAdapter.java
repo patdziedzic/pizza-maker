@@ -22,6 +22,10 @@ import com.google.android.material.chip.Chip;
 
 import java.util.ArrayList;
 
+/**
+ * This class defines an Adapter for the RecyclerView of Specialty Pizza.
+ * @author Patryk Dziedzic, Aveesh Patel
+ */
 class SpecialtyPizzaAdapter extends RecyclerView.Adapter<SpecialtyPizzaAdapter.SpecialtyPizzaHolder>{
 
     private Context context; //need the context to inflate the layout
@@ -86,7 +90,6 @@ class SpecialtyPizzaAdapter extends RecyclerView.Adapter<SpecialtyPizzaAdapter.S
     public int getItemCount() {
         return pizzas.size(); //number of Pizza in the array list.
     }
-
 
 
 

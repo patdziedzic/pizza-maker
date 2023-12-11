@@ -19,6 +19,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * This class defines an Android Activity for viewing and placing an Order.
+ * @author Patryk Dziedzic, Aveesh Patel
+ */
 public class CurrentOrderActivity extends AppCompatActivity
 {
     private final double SALES_TAX = 0.06625;
@@ -39,7 +43,6 @@ public class CurrentOrderActivity extends AppCompatActivity
      * @param savedInstanceState If the activity is being re-initialized after
      *     previously being shut down then this Bundle contains the data it most
      *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
-     *
      */
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -184,13 +187,13 @@ public class CurrentOrderActivity extends AppCompatActivity
                         createNewOrder();
                         globalData.setStoreOrders(storeOrders);
                         Toast.makeText(getApplicationContext(),
-                                "Order added to store orders.", Toast.LENGTH_LONG).show();
+                                "Order added to Store Orders.", Toast.LENGTH_LONG).show();
                     }
                     //handle the "NO" click
                 }).setNegativeButton("no", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         Toast.makeText(getApplicationContext(),
-                                "Order not added to store orders.", Toast.LENGTH_LONG).show();
+                                "Order not added to Store Orders.", Toast.LENGTH_LONG).show();
                     }
                 });
                 AlertDialog dialog = alert.create();

@@ -3,6 +3,10 @@ package com.example.pizzamaker;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * This class defines a Sizzling Delight Pizza.
+ * @author Patryk Dziedzic, Aveesh Patel
+ */
 public class SizzlingDelight extends Pizza
 {
     /**
