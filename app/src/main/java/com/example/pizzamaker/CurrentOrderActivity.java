@@ -25,19 +25,12 @@ public class CurrentOrderActivity extends AppCompatActivity
     private static GlobalData globalData = GlobalData.getInstance();
 
     private TextView orderNum;
-
     private ListView listPizzas;
-
     private TextView subtotalValue;
-
     private TextView salesTaxValue;
-
     private TextView orderTotalValue;
-
     private Button addOrderButton;
-
     private ObservableArrayList<String> selPizzas = new ObservableArrayList<>();
-
     private ArrayAdapter<String> selPizzasAdapter;
 
     @Override
@@ -178,6 +171,4 @@ public class CurrentOrderActivity extends AppCompatActivity
             }
         });
     }
-
-
 }
