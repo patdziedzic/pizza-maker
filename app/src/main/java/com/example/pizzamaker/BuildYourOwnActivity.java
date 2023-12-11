@@ -96,8 +96,7 @@ public class BuildYourOwnActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), clickedTopping + " Added.", Toast.LENGTH_SHORT).show();
                         }
                     }).setNegativeButton("no", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                        }
+                        public void onClick(DialogInterface dialog, int which) {}
                     });
                     AlertDialog dialog = alert.create();
                     dialog.show();
@@ -192,7 +191,6 @@ public class BuildYourOwnActivity extends AppCompatActivity {
                             Order currOrder = globalData.getCurrOrder();
                             currOrder.addPizza(currPizza);
                             globalData.setCurrOrder(currOrder);
-                            //^ still must update pizzas on GUI and the prices on GUI for currentorderactivity
                             Toast.makeText(getApplicationContext(),
                                     buildYourOwnText.getText().toString() + " added.", Toast.LENGTH_LONG).show();
                         }

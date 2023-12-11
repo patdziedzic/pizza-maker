@@ -16,10 +16,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         GlobalData globalData = GlobalData.getInstance();
+
         Order newOrder = new Order();
-        newOrder.setPizzas(new ArrayList<>());
+        newOrder.setOrderNumber(StoreOrders.getNextOrderNumber());
         StoreOrders.incrementNextOrderNumber();
+        newOrder.setPizzas(new ArrayList<>());
         globalData.setCurrOrder(newOrder);
+
         globalData.setStoreOrders(new StoreOrders());
     }
 

@@ -16,10 +16,12 @@ import android.widget.Toast;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CurrentOrderActivity extends AppCompatActivity
 {
+    private final double SALES_TAX = 0.06625;
     private static GlobalData globalData = GlobalData.getInstance();
 
     private TextView orderNum;
@@ -50,22 +52,63 @@ public class CurrentOrderActivity extends AppCompatActivity
         salesTaxValue = findViewById(R.id.salesTaxValue);
         orderTotalValue = findViewById(R.id.orderTotalValue);
         addOrderButton = findViewById(R.id.addOrderButton);
-
+        selPizzasAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, selPizzas);
+        listPizzas.setAdapter(selPizzasAdapter);
+        setListPizzasToRemoveOnClick();
+        setAddToStoreOrdersButtonOnClick();
     }
 
-    public static void createNewOrder() {
+    @Override
+    public void onResume(){
+        super.onResume();
+        updateGUI();
+    }
+
+    /**
+     * Update GUI based on currOrder
+     */
+    private void updateGUI() {
+        selPizzas.clear();
+        Order currOrder = globalData.getCurrOrder();
+        orderNum.setText(String.format("%d", currOrder.getOrderNumber()));
+
+        ArrayList<Pizza> currOrderPizzas = currOrder.getPizzas();
+        if (currOrderPizzas != null && currOrderPizzas.size() > 0) {
+            //set the prices and the list of pizzas
+            double subtotal = 0.0;
+            for (Pizza pizza : currOrderPizzas) {
+                selPizzas.add(pizza.toString());
+                subtotal += pizza.price();
+            }
+            selPizzasAdapter.notifyDataSetChanged();
+            subtotalValue.setText(String.format("%.2f", subtotal));
+            double tax = subtotal * SALES_TAX;
+            salesTaxValue.setText(String.format("%.2f", tax));
+            double total = subtotal + tax;
+            orderTotalValue.setText(String.format("%.2f", total));
+            currOrder.setOrderTotal(total);
+
+            globalData.setCurrOrder(currOrder);
+        }
+        else {
+            selPizzasAdapter.notifyDataSetChanged();
+            subtotalValue.setText(String.format("%.2f", 0.00));
+            salesTaxValue.setText(String.format("%.2f", 0.00));
+            orderTotalValue.setText(String.format("%.2f", 0.00));
+        }
+    }
+
+    private void createNewOrder() {
         Order currOrder = new Order();
         currOrder.setOrderNumber(StoreOrders.getNextOrderNumber());
         StoreOrders.incrementNextOrderNumber();
         currOrder.setPizzas(new ArrayList<>());
+        globalData.setCurrOrder(currOrder);
+        updateGUI();
     }
 
-    private void removePizza()
+    private void setListPizzasToRemoveOnClick()
     {
-        selPizzasAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, selPizzas);
-        listPizzas = findViewById(R.id.listPizzas);
-        listPizzas.setAdapter(selPizzasAdapter);
-
         listPizzas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
@@ -73,14 +116,13 @@ public class CurrentOrderActivity extends AppCompatActivity
                 AlertDialog.Builder alert = new AlertDialog.Builder(listPizzas.getContext());
                 alert.setTitle("Remove Pizza?");
                 alert.setMessage(listPizzas.getAdapter().getItem(position).toString());
-
                 alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        String clickedTopping = parent.getAdapter().getItem(position).toString();
-                        selPizzas.remove(parent);
+                        String clickedPizza = parent.getAdapter().getItem(position).toString();
+                        selPizzas.remove(position);
                         selPizzasAdapter.notifyDataSetChanged();
-
-                        Toast.makeText(getApplicationContext(), clickedTopping + " Removed.", Toast.LENGTH_SHORT).show();
+                        removePizzaFromGlobalOrder(clickedPizza);
+                        Toast.makeText(getApplicationContext(), clickedPizza + " Removed.", Toast.LENGTH_SHORT).show();
                     }
                 }).setNegativeButton("no", new DialogInterface.OnClickListener()
                 {
@@ -92,30 +134,37 @@ public class CurrentOrderActivity extends AppCompatActivity
         });
     }
 
-    private void updatePrices()
-    {
-
+    private void removePizzaFromGlobalOrder(String clickedPizza) {
+        Order currOrder = globalData.getCurrOrder();
+        ArrayList<Pizza> currOrderPizzas = currOrder.getPizzas();
+        for (Pizza pizza : currOrderPizzas) {
+            if (pizza.toString().equals(clickedPizza)) {
+                currOrderPizzas.remove(pizza);
+                currOrder.setPizzas(currOrderPizzas);
+                globalData.setCurrOrder(currOrder);
+                updateGUI();
+                return;
+            }
+        }
     }
 
-    private void addToStoreOrdersButtonOnClick()
+    private void setAddToStoreOrdersButtonOnClick()
     {
         addOrderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder alert = new AlertDialog.Builder(addOrderButton.getContext());
                 alert.setTitle("Add to Store Orders?");
-                //alert.setMessage();
-
+                alert.setMessage("Order #" + orderNum.getText().toString());
                 alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        //createNewOrder(); IDK if we add this here
                         Order order = globalData.getCurrOrder();
                         StoreOrders storeOrders = globalData.getStoreOrders();
                         storeOrders.addOrder(order);
+                        createNewOrder();
                         globalData.setStoreOrders(storeOrders);
                         Toast.makeText(getApplicationContext(),
                                 "Order added to store orders.", Toast.LENGTH_LONG).show();
-
                     }
                     //handle the "NO" click
                 }).setNegativeButton("no", new DialogInterface.OnClickListener() {

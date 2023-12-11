@@ -166,9 +166,9 @@ class SpecialtyPizzaAdapter extends RecyclerView.Adapter<SpecialtyPizzaAdapter.S
                                 createPizza();
                                 Pizza currPizza = globalData.getCurrPizza();
                                 Order currOrder = globalData.getCurrOrder();
-                                currOrder.addPizza(currPizza);
+                                for (int i = 0; i < Integer.parseInt(input_Amount.getText().toString()); i++)
+                                    currOrder.addPizza(currPizza);
                                 globalData.setCurrOrder(currOrder);
-                                //^ still must update pizzas on GUI and the prices on GUI for currentorderactivity
                                 Toast.makeText(itemView.getContext(),
                                         txt_pizzaName.getText().toString() + " added.", Toast.LENGTH_LONG).show();
                             }
