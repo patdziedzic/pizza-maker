@@ -237,7 +237,7 @@ public class BuildYourOwnActivity extends AppCompatActivity {
         currPizza.toppings = selectedToppings;
 
         double price = currPizza.price();
-        priceTextField.setText(String.format("$%.2f", price));
+        priceTextField.setText(String.format("%.2f", price));
 
         globalData.setCurrPizza(currPizza);
     }
