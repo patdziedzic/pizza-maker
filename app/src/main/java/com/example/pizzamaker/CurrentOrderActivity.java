@@ -33,6 +33,14 @@ public class CurrentOrderActivity extends AppCompatActivity
     private ObservableArrayList<String> selPizzas = new ObservableArrayList<>();
     private ArrayAdapter<String> selPizzasAdapter;
 
+    /**
+     * Initializes all necessary values from the GUI and sets up the CurrentOrderActivity screen
+     * for the Current Order
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     *
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -51,6 +59,9 @@ public class CurrentOrderActivity extends AppCompatActivity
         setAddToStoreOrdersButtonOnClick();
     }
 
+    /**
+     * When the CurrentOrder Activity is resumed, update the GUI and correctly resume the activity
+     */
     @Override
     public void onResume(){
         super.onResume();
@@ -91,6 +102,9 @@ public class CurrentOrderActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Creates a new Order to set as CurrentOrder and respectively updates the GUI
+     */
     private void createNewOrder() {
         Order currOrder = new Order();
         currOrder.setOrderNumber(StoreOrders.getNextOrderNumber());
@@ -100,6 +114,10 @@ public class CurrentOrderActivity extends AppCompatActivity
         updateGUI();
     }
 
+    /**
+     * With the listPizzas ListView that shows the pizzas in the Current Order, this method
+     * provides functionality to remove a pizza from the given Current Order
+     */
     private void setListPizzasToRemoveOnClick()
     {
         listPizzas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -127,6 +145,11 @@ public class CurrentOrderActivity extends AppCompatActivity
         });
     }
 
+    /**
+     * Helper method to remove the pizza from GlobalData, the Singleton design structure,
+     * and create the new order without the specified pizza
+     * @param clickedPizza the pizza to be removed
+     */
     private void removePizzaFromGlobalOrder(String clickedPizza) {
         Order currOrder = globalData.getCurrOrder();
         ArrayList<Pizza> currOrderPizzas = currOrder.getPizzas();
@@ -141,6 +164,10 @@ public class CurrentOrderActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Provides functionality to the Add to Store Orders Button by taking the CurrentOrder and
+     * adding it to the List of Orders for StoreOrders
+     */
     private void setAddToStoreOrdersButtonOnClick()
     {
         addOrderButton.setOnClickListener(new View.OnClickListener() {

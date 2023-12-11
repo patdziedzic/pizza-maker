@@ -32,6 +32,14 @@ public class StoreOrderActivity extends AppCompatActivity
     private ObservableArrayList<String> orderNumbers = new ObservableArrayList<>();
     private ArrayAdapter<String> orderNumbersAdapter;
 
+    /**
+     * Correctly initializes the StoreOrders GUI (screen) with all the necessary components to
+     * be completely functional
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     *
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -51,12 +59,19 @@ public class StoreOrderActivity extends AppCompatActivity
         setCancelOrderButtonOnClick();
     }
 
+    /**
+     * When the thread's control is transferred back to the StoreOrders screen, update the GUI and
+     * resume the StoreOrder's associated activity
+     */
     @Override
     public void onResume(){
         super.onResume();
         updateGUI();
     }
 
+    /**
+     * Updates the GUI to reflect the state of the list of Orders in Store Orders
+     */
     private void updateGUI() {
         orderNumbers.clear();
         selPizzas.clear();
@@ -79,6 +94,10 @@ public class StoreOrderActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Updates the total and specified pizzas in StoreOrders for the specified Order passed as the param
+     * @param selectedOrder the specified Order
+     */
     private void updateTotalAndPizzas(Order selectedOrder) {
         if (selectedOrder != null) {
             orderTotalVal.setText(String.format("%.2f", selectedOrder.getOrderTotal()));
@@ -91,6 +110,10 @@ public class StoreOrderActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Gets the selected and chosen Order that the User touched
+     * @return the specified Order
+     */
     private Order getSelectedOrder() {
         orderNum = Integer.parseInt(orderNoSpinner.getSelectedItem().toString()); //getselecteditem to string on a null
         StoreOrders storeOrders = globalData.getStoreOrders();
@@ -105,6 +128,9 @@ public class StoreOrderActivity extends AppCompatActivity
         return selectedOrder;
     }
 
+    /**
+     * Clears the pizzas from the spinner when specified
+     */
     private void setSpinnerSelectedListener() {
         orderNoSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -118,6 +144,9 @@ public class StoreOrderActivity extends AppCompatActivity
         });
     }
 
+    /**
+     * Cancels the specified Order from StoreOrders on the click of the associated button
+     */
     private void setCancelOrderButtonOnClick()
     {
         cancelOrderButton.setOnClickListener(new View.OnClickListener() {

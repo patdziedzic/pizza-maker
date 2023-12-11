@@ -64,6 +64,11 @@ public class BuildYourOwnActivity extends AppCompatActivity {
         setAddButtonOnClick();
     }
 
+    /**
+     * Takes the list of Toppings in the Topping enum and populates all of the
+     * Toppings in the additionalToppingsList ListView, as well as giving
+     * functionality to adding a Topping to the selectedToppingsList ListView
+     */
     private void setupAdditionalToppings() {
         Topping[] enumToppings = Topping.values();
         String[] allStringToppings = new String[enumToppings.length];
@@ -105,6 +110,10 @@ public class BuildYourOwnActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Correctly populates the selectedToppingsList ListView and gives the functionality to
+     * remove a selected Topping back to be an additional Topping
+     */
     private void setupSelectedToppings() {
         selTopAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, selToppings);
         selectedToppingsList = findViewById(R.id.selectedToppingsList);
@@ -135,6 +144,10 @@ public class BuildYourOwnActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * When any component of the BuildYourOwn pizza, besides the Toppings, change, create a
+     * new pizza with the desired user specifications
+     */
     private void setOnPizzaChange() {
         pizzaSizeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -170,6 +183,11 @@ public class BuildYourOwnActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Provides functionality for the Add to Order Button by first ensuring the topping restrictions
+     * are adhered to and then alerting the user with an AlertDialog and Toast when the pizza
+     * is added to the Order
+     */
     private void setAddButtonOnClick() {
         addToOrderButton.setOnClickListener(new View.OnClickListener() {
             @Override

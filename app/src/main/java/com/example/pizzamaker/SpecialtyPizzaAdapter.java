@@ -29,6 +29,11 @@ class SpecialtyPizzaAdapter extends RecyclerView.Adapter<SpecialtyPizzaAdapter.S
     private ArrayList<Pizza> pizzas; //need the data binding to each row of RecyclerView
     private ArrayAdapter<String> toppingsArrayAdapter;
 
+    /**
+     * Initializes the SpecialtyPizzaAdapter with a Context and an ArrayList of pizzas
+     * @param context the Context to be initialized
+     * @param pizzas the list of pizzas to be initialized
+     */
     public SpecialtyPizzaAdapter(Context context, ArrayList<Pizza> pizzas) {
         this.context = context;
         this.pizzas = pizzas;
@@ -36,9 +41,9 @@ class SpecialtyPizzaAdapter extends RecyclerView.Adapter<SpecialtyPizzaAdapter.S
 
     /**
      * This method will inflate the row layout for the items in the RecyclerView
-     * @param parent
-     * @param viewType
-     * @return
+     * @param parent the ViewGroup to inflate via the View
+     * @param viewType the integer representing the viewType
+     * @return a SpecialtyPizzaHolder depicting the inflated row layout
      */
     @NonNull
     @Override
@@ -86,7 +91,7 @@ class SpecialtyPizzaAdapter extends RecyclerView.Adapter<SpecialtyPizzaAdapter.S
 
 
     /**
-     * Get the views from the row layout file, similar to the onCreate() method.
+     * Holder class for Specialty Pizza
      */
     public static class SpecialtyPizzaHolder extends RecyclerView.ViewHolder {
         private TextView txt_pizzaName, txt_price;
@@ -97,6 +102,10 @@ class SpecialtyPizzaAdapter extends RecyclerView.Adapter<SpecialtyPizzaAdapter.S
         private EditText input_Amount;
         private Button btn_add;
 
+        /**
+         * Constructor which initializes and links all the necessary elements from the GUI
+         * @param itemView the View
+         */
         public SpecialtyPizzaHolder(@NonNull View itemView) {
             super(itemView);
             txt_pizzaName = itemView.findViewById(R.id.txt_pizzaName);
@@ -114,6 +123,11 @@ class SpecialtyPizzaAdapter extends RecyclerView.Adapter<SpecialtyPizzaAdapter.S
             setAddButtonOnClick(itemView);
         }
 
+        /**
+         * Anytime a component of a given Specialty Pizza is changed, create a new pizza
+         * depicting the new pizza from the user's specifications
+         * @param itemView the View interacted with
+         */
         private void setOnPizzaChange(@NonNull View itemView) {
             chip_sm.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -150,7 +164,7 @@ class SpecialtyPizzaAdapter extends RecyclerView.Adapter<SpecialtyPizzaAdapter.S
         /**
          * Set the onClickListener for the button on each row.
          * Clicking on the button will create an AlertDialog with the options of YES/NO.
-         * @param itemView
+         * @param itemView the View interacted with
          */
         private void setAddButtonOnClick(@NonNull View itemView) {
             btn_add.setOnClickListener(new View.OnClickListener() {
@@ -211,6 +225,10 @@ class SpecialtyPizzaAdapter extends RecyclerView.Adapter<SpecialtyPizzaAdapter.S
             globalData.setCurrPizza(currPizza);
         }
 
+        /**
+         * Determines whether or not the amount of pizzas selected is a valid amount
+         * @return true or false depicting whether or not it is a valid amount
+         */
         private boolean isValidAmount() {
             String strInput = input_Amount.getText().toString();
             if (!strInput.isEmpty()) {

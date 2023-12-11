@@ -16,6 +16,14 @@ public class SpecialtyPizzaActivity extends AppCompatActivity {
             R.drawable.mightyharvest, R.drawable.pepperoni, R.drawable.savoryfusion, R.drawable.seafood,
             R.drawable.sizzlingdelight, R.drawable.supreme, R.drawable.veggiefiesta};
 
+    /**
+     * Correctly sets up the necessary components of the SpecialtyPizza screen so the user
+     * can order a Specialty Pizza
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     *
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
